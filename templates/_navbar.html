@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{{ url_for('dashboard') if session.get('user_id') else url_for('index') }}">🥗 FoodSaver</a>
+        <div class="d-flex gap-2 flex-wrap justify-content-end">
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('dashboard') }}" class="btn btn-sm btn-outline-light">Dashboard</a>
+                <a href="{{ url_for('add_food') }}" class="btn btn-sm btn-outline-light">Add Food</a>
+                <a href="{{ url_for('reports') }}" class="btn btn-sm btn-outline-light">Reports</a>
+                <a href="{{ url_for('logout') }}" class="btn btn-sm btn-light">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-sm me-2">Login</a>
+                <a href="{{ url_for('register') }}" class="btn btn-light btn-sm">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
